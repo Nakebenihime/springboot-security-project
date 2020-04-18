@@ -22,12 +22,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.scm.id>github</project.scm.id>
     </properties>
 
     <scm>
-        <connection></connection>
-        <url></url>
-        <developerConnection></developerConnection>
+        <connection>scm:git:https://github.com/Nakebenihime/springboot-security-project.git</connection>
+        <url>https://github.com/Nakebenihime/springboot-security-project</url>
+        <developerConnection>scm:git:https://github.com/Nakebenihime/springboot-security-project.git</developerConnection>
     </scm>
 
     <dependencies>
