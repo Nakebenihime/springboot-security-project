@@ -5,10 +5,7 @@ import org.example.model.User;
 import org.example.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +13,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("api/public")
+@CrossOrigin
 public class PublicApiController {
 
     private UserServiceImpl userService;
@@ -25,17 +23,21 @@ public class PublicApiController {
         this.userService = userService;
     }
 
+    // Available to all authenticated users
     @GetMapping("test1")
     public String test1(){ return "API test 1"; }
 
-    @GetMapping("test2")
-    public String test2(){ return "API test 2"; }
+    // Available to managers
+    @GetMapping("manager/reports")
+    public String reports(){ return "Some report data"; }
 
-    @GetMapping("users")
+    // Available to ROLE_ADMIN
+    @GetMapping("admin/users")
     public ResponseEntity<List<User>> users() {
         List<User> users = this.userService.findAll();
         return ResponseEntity.ok(users);
     }
+    // Available to ROLE_ADMIN
     @GetMapping("/{username}")
     public ResponseEntity<User> getByUsername(@PathVariable String username) {
         log.info("fetching user with username {}", username);

@@ -1,7 +1,6 @@
 package org.example.configuration;
 
 import org.example.model.User;
-import org.example.configuration.UserPrincipal;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
