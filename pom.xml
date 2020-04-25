@@ -9,7 +9,7 @@
     </parent>
     <groupId>org.example</groupId>
     <artifactId>boot-security-project</artifactId>
-    <version>3.0.0-JWT-AUTH</version>
+    <version>3.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>boot-security-project</name>
@@ -28,7 +28,7 @@
         <connection>scm:git:https://github.com/Nakebenihime/springboot-security-project.git</connection>
         <url>https://github.com/Nakebenihime/springboot-security-project</url>
         <developerConnection>scm:git:https://github.com/Nakebenihime/springboot-security-project.git</developerConnection>
-      <tag>v3.0.0-JWT-AUTH</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <dependencies>
