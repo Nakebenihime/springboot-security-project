@@ -12,7 +12,7 @@
     <version>3.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>boot-security-project</name>
+    <name>springboot-security-project</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

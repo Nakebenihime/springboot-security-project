@@ -14,7 +14,7 @@ v3 - JWT AUTHENTICATION
 ## TECHNOLOGY STACK
 COMPONENT                           | TECHNOLOGY              | FOR MORE INFORMATION
 ---                                 | ---                     |---
-Languages & Frameworks              |`spring boot`            | https://spring.io/projects/spring-boot
+Languages & Frameworks              |`springboot`            | https://spring.io/projects/spring-boot
 Databases                           |`mongoDB`                | https://www.mongodb.com/
 Java Tools                          |`lombok` `maven`         | https://projectlombok.org/ & https://maven.apache.org/
 User Management and Authentication  |`java-jwt`               | https://github.com/auth0/java-jwt
@@ -85,12 +85,8 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows
 ```
 For more instructions, visit [maven.apache.org](https://maven.apache.org/) official website.
 
-## PROJECT STRUCTURE
-```
-
-```
 ## GETTING STARTED
-clone the application, run the following command:
+Clone the application, run the following command:
 ```
 git clone https://github.com/Nakebenihime/springboot-security-project.git
 ```
@@ -105,6 +101,21 @@ You can now switch to each of the git tags using the following command:
 ```
 git checkout v1.0.0-HTTPBASIC |OR| v2.0.0-FORM-BASED-AUTH |OR| v3.0.0-JWT-AUTH
 ```
+Generate a keystore:
+```
+keytool -genkeypair -alias bootsecurity -storetype PKCS12 -keyalg RSA -keysize 2048  -keystore bootsecurity.p12 -validity 3650
+```
+Configure SSL properties:
+```
+server:
+port: 8443
+ssl:
+enabled: true
+key-store: src/main/resources/bootsecurity.p12
+key-store-password: bootsecurity
+key-store-type: PKCS12
+key-alias: bootsecurity
+```
 Build the application with the following command:
 ```
 mvnw clean package
@@ -118,10 +129,40 @@ or run with maven command:
 mvnw spring-boot:run
 ```
 ##EXPLORE THE APPLICATION
-For each git tag (v1-...,v2-...,v3-...) you have three users (user, manager and admin); all these users have different roles/permissions in the application.
+For each git tag (v1-...,v2-...,v3-...) you have three users (user, manager and admin); all these users have distinct roles/permissions in the application
 
 | USER                    | ROLES/PERMISSIONS                   | ACCESS 
 ---                       | ---                                 | ---                           
-USER                      | USER / ""                           | profile/index;
-MANAGER                   | MANAGER / "ACCESS_TEST1"            | profile/index & manager/index /api/public/test1;
-ADMIN                     | ADMIN / "ACCESS_TEST1,ACCESS_TEST2" | profile/index & manager/index & admin/index & /api/public/test1 & /api/public/test2;
+USER                      | USER / ""                           | profile/index
+MANAGER                   | MANAGER / "ACCESS_TEST1"            | profile/index & manager/index /api/public/test1
+ADMIN                     | ADMIN / "ACCESS_TEST1,ACCESS_TEST2" | profile/index & manager/index & admin/index & /api/public/test1 & /api/public/test2
+
+## cURL - v3.0.0-JWT-AUTH
+
+Retrieve JWT access token (change username and password to have alternate authorities and roles)
+```
+curl --location --request POST 'https://localhost:8443/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"username":"user",
+"password":"user123"
+}'
+```
+
+GET test1 (resource available to all the authenticated users)
+```
+curl --location --request GET 'https://localhost:8443/api/public/test1' \
+--header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjA4NDA2NTkyfQ.dWptNWtBsvYC01IxRCuilkK1GaTy1ZQCbrk5lidGs4RYtI-RQkOKwYbyKeVeKgahtuWagAFtkXdIAy5Rt4CKwA'
+```
+
+GET reports (resource available to managers)
+```
+curl --location --request GET 'https://localhost:8443/api/public/manager/reports' \
+--header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjA4NDA2NTkyfQ.dWptNWtBsvYC01IxRCuilkK1GaTy1ZQCbrk5lidGs4RYtI-RQkOKwYbyKeVeKgahtuWagAFtkXdIAy5Rt4CKwA'
+```
+
+GET users (resource available to admins)
+```
+curl --location --request GET 'https://localhost:8443/api/public/admin/users' \
+--header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjA4NDA2NTkyfQ.dWptNWtBsvYC01IxRCuilkK1GaTy1ZQCbrk5lidGs4RYtI-RQkOKwYbyKeVeKgahtuWagAFtkXdIAy5Rt4CKwA'
+```
