@@ -23,67 +23,8 @@ Security                            |`spring security`        | https://spring.i
 ## PREREQUISITES
 These instructions will allow you to get a copy of the project on your **windows** machine, you must have the following software correctly installed in order to build the project.
 
-### INSTALL JAVA
-1. visit [oracle.com](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html) official website
-2. select the windows x64 installer
-3. run the installer and follow the steps
-
-Set a new "JAVA_HOME" variable under "advanced system settings" > "environment variables" and click "new system variable": 
-```
-variable name: JAVA_HOME
-variable value: C:\Program Files\Java\jdk-14.0.2
-```
-In system variables, find PATH, click edit... button and add:
-```
-%JAVA_HOME%\bin
-```
-Open a command prompt window to verify the installation with the following command:
-```
-C:\Windows\System32> echo %JAVA_HOME%
-C:\Program Files\Java\jdk-14.0.2
-
-C:\Windows\System32> java -version
-java version "14.0.2" 2020-07-14
-Java(TM) SE Runtime Environment (build 14.0.2+12-46)
-Java HotSpot(TM) 64-Bit Server VM (build 14.0.2+12-46, mixed mode, sharing)
-```
-
-####  INSTALL MAVEN
-Maven is a build automation tool used primarily for JAVA projects.
-
-1.	visit [maven.apache.org](https://maven.apache.org/download.cgi/) official website
-2.	select the binary zip archive and extract it to you favorite location
-
-Set two new variables under "advanced system settings" > "environment variables" and click "new system variable":
-- first variable:
-```
-variable name: M2_HOME
-variable value: C:\Program Files\apache-maven-3.6.3
-```
-- second variable:
-```
-variable name: MAVEN_HOME
-variable value: C:\Program Files\apache-maven-3.6.3
-```
-In system variables, find PATH, click edit... button and add:
-- first variable:
-```
-%M2_HOME%\bin
-```
-- second variable:
-```
-%MAVEN_HOME%\bin
-```
-open a command prompt window to verify maven installation with the following command:
-```
-C:\Windows\System32> mvn -v
-Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
-Maven home: C:\Program Files\apache-maven-3.6.3\bin\..
-Java version: 14.0.2, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-14.0.2
-Default locale: fr_FR, platform encoding: Cp1252
-OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows
-```
-For more instructions, visit [maven.apache.org](https://maven.apache.org/) official website.
+- [JAVA](https://nakebenihime.github.io/windows/java/guide-openjdk16.html)
+- [MAVEN](https://nakebenihime.github.io/windows/java/guide-apache-maven3.html)
 
 ## GETTING STARTED
 Clone the application, run the following command:
