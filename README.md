@@ -14,7 +14,7 @@ v3 - JWT AUTHENTICATION
 ## TECHNOLOGY STACK
 COMPONENT                           | TECHNOLOGY              | FOR MORE INFORMATION
 ---                                 | ---                     |---
-Languages & Frameworks              |`springboot`            | https://spring.io/projects/spring-boot
+Languages & Frameworks              |`springboot`             | https://spring.io/projects/spring-boot
 Databases                           |`mongoDB`                | https://www.mongodb.com/
 Java Tools                          |`lombok` `maven`         | https://projectlombok.org/ & https://maven.apache.org/
 User Management and Authentication  |`java-jwt`               | https://github.com/auth0/java-jwt
@@ -23,8 +23,8 @@ Security                            |`spring security`        | https://spring.i
 ## PREREQUISITES
 These instructions will allow you to get a copy of the project on your **windows** machine, you must have the following software correctly installed in order to build the project.
 
-- [JAVA](https://nakebenihime.github.io/windows/java/guide-openjdk16.html)
-- [MAVEN](https://nakebenihime.github.io/windows/java/guide-apache-maven3.html)
+- [JAVA](https://mario-dacosta.gitbook.io/nakebenihime/tutorials/java-technology-framework-and-tools/openjdk/how-to-install-openjdk-on-windows)
+- [MAVEN](https://mario-dacosta.gitbook.io/nakebenihime/tutorials/java-technology-framework-and-tools/apache-maven/how-to-install-apache-maven-3.8.x-on-windows)
 
 ## GETTING STARTED
 Clone the application, run the following command:
